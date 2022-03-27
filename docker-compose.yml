@@ -1,0 +1,23 @@
+version: '3.5'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /usr/src/myapp
+    container_name: doctrine-test
+    restart: unless-stopped
+    volumes:
+      - ./:/usr/src/myapp
+    stdin_open: true
+    tty: true
+  
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password --innodb-use-native-aio=0
+    restart: unless-stopped
+    ports:
+      - "3301:3306"
+    tty: true
+    environment:
+      MYSQL_ROOT_PASSWORD: example
