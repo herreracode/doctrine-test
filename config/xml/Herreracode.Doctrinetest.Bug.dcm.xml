@@ -1,0 +1,21 @@
+<!-- config/xml/Bug.dcm.xml -->
+<doctrine-mapping xmlns="https://doctrine-project.org/schemas/orm/doctrine-mapping"
+      xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Herreracode\Doctrinetest\Bug" table="bugs">
+        <id name="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="description" type="text" />
+        <field name="created" type="datetime" />
+        <field name="status" type="string" />
+
+        <many-to-one target-entity="Herreracode\Doctrinetest\User" field="reporter" inversed-by="reportedBugs" />
+        <many-to-one target-entity="Herreracode\Doctrinetest\User" field="engineer" inversed-by="assignedBugs" />
+
+        <many-to-many target-entity="Herreracode\Doctrinetest\Product" field="products" />
+    </entity>
+</doctrine-mapping>
