@@ -20,9 +20,9 @@ class Product
     
     }
 
-    public function getName($name){
+    public function getName(){
 
-        $this->name = $name;
+        return $this->name;
     }
 
     public function getId(){
