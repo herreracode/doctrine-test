@@ -1,0 +1,20 @@
+<doctrine-mapping xmlns="https://doctrine-project.org/schemas/orm/doctrine-mapping"
+      xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+
+    <entity name="Herreracode\Doctrinetest\Animal" inheritance-type="JOINED">
+        <id name="id" type="integer">
+              <generator strategy="AUTO" />
+          </id>
+
+          <field name="name" type="string" />
+        <discriminator-column name="discr" type="string" />
+         <discriminator-map>
+            <discriminator-mapping value="cat" class="Herreracode\Doctrinetest\Cat" />
+            <discriminator-mapping value="dog" class="Herreracode\Doctrinetest\Dog" />
+            <discriminator-mapping value="person" class="Herreracode\Doctrinetest\Person" />
+        </discriminator-map>
+    </entity>
+</doctrine-mapping>
