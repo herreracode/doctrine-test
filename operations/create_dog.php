@@ -12,33 +12,56 @@ use Herreracode\Doctrinetest\Cat;
 use Herreracode\Doctrinetest\Person;
 
  
-$productRepository = $entityManager->getRepository(Person::class);
-
-$products = $productRepository->findAll();
+// $productRepository = $entityManager->getRepository(Person::class);
 
 
+$animalsRepository = $entityManager->getRepository(Animal::class);
 
-foreach ($products as $product) {
+// $products = $productRepository->findAll();
+$animals = $animalsRepository->findAll();
 
-    foreach($product->getAnimals() as $Animal){
-        echo get_class($Animal) ."\n";
-    }
+
+foreach($animals as $animal){
+    var_dump(get_class($animal->getPersons()->first()))  ."\n";
+    die();
 }
 
 
-/*
-$Person = new Dog();
-$Person->setLastName("perro nuevo last name");
-$Person->setName("perro nuevo nomobnre");
 
+/*
+foreach ($products as $product) {
+
+    foreach($product->getAnimals() as $Animal){
+        var_dump($Animal->getPersons())  ."\n";
+    }
+}
+*/
+
+
+
+
+/*
 $Person2 = $entityManager->find(Person::class, (int) 2);
 
 $entityManager->persist($Person);
 $entityManager->flush($Person);
 
 $Person2->assignToAnimal($Person);
+*/
 
 
+/*
+$Dog = new Dog();
+$Dog->setLastName("perro nuevo last name");
+$Dog->setName("perro nuevo nomobnre");
+
+$Person2 = new Person();
+$Person2->setName("gerardo");
+
+$Person2->assignToAnimal($Dog);
+
+$entityManager->persist($Dog);
+$entityManager->flush();
 $entityManager->persist($Person2);
 $entityManager->flush();
 

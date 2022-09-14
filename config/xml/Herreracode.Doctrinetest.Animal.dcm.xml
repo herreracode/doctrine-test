@@ -16,5 +16,6 @@
             <discriminator-mapping value="dog" class="Herreracode\Doctrinetest\Dog" />
             <discriminator-mapping value="person" class="Herreracode\Doctrinetest\Person" />
         </discriminator-map>
+        <many-to-many field="persons" mapped-by="animal" target-entity="Person"/>
     </entity>
 </doctrine-mapping>

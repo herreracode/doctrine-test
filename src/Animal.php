@@ -13,7 +13,7 @@ abstract class Animal
      */
     private $name;
 
-    private $Persons;
+    private $persons;
 
     public function setName($name){
 
@@ -28,5 +28,10 @@ abstract class Animal
 
     public function getId(){
         return $this->id;
+    }
+
+    public function getPersons()
+    {
+        return $this->persons;
     }
 }
